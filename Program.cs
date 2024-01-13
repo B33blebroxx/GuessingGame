@@ -15,8 +15,17 @@ void GuessPrompt()
     }
     else
     {
-        Console.WriteLine($"\n\tSorry, you guessed incorrectly. You may try {GuessesRemaining(userGuesses.Count) - 1} more times.");
+        if (userGuess < secretNumber)
+        {
+        Console.WriteLine($"\n\tSorry, your guess was too low. You may try {GuessesRemaining(userGuesses.Count) - 1} more times.");
         userGuesses.Add(userGuess);
+        }
+        else if (userGuess > secretNumber)
+        {
+            Console.WriteLine($"\n\tSorry, your guess was too high. You may try {GuessesRemaining(userGuesses.Count) - 1} more times.");
+            userGuesses.Add(userGuess);
+        }
+
 
         if (userGuesses.Count >= 4)
         {
